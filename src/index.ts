@@ -2,7 +2,7 @@ import { Browser } from 'puppeteer'
 import pixelmatch from 'pixelmatch'
 import { PNG } from 'pngjs'
 
-export async function login(browser: Browser, clientNumber: string, accessCode: string) {
+export async function login(browser: Browser, clientNumber: string, accessCode: string): Promise<string> {
   const page = await browser.newPage()
   await page.goto('https://www.ing.com.au/securebanking/')
   await page.type('#cifField', clientNumber)

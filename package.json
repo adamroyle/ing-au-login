@@ -2,12 +2,20 @@
   "name": "ing-au-login",
   "version": "1.0.0",
   "description": "Easily login to your ING AU account using puppeteer",
+  "repository": "https://github.com/adamroyle/ing-au-login",
+  "author": {
+    "name": "Adam Royle",
+    "url": "https://github.com/adamroyle"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=10"
+  },
   "devDependencies": {
     "@bigfishtv/prettier-config": "^1.0.5",
     "@types/pixelmatch": "^5.0.0",
