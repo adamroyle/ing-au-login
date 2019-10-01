@@ -32,7 +32,6 @@ const ACCOUNT_NUMBER = '12345678'
 
 const axios = require('axios')
 const qs = require('qs')
-const fs = require('fs')
 const moment = require('moment')
 const puppeteer = require('puppeteer')
 const { login } = require('ing-au-login')
