@@ -4,7 +4,7 @@
 
 Easily login to your ING Australia bank account using [puppeteer](https://pptr.dev/).
 
-This package circumvents ING's "secure" login keypad by analysing the pixel data of the keypad images.
+This package circumvents ING's ["secure" login keypad](https://www.ing.com.au/securebanking/) by analysing the pixel data of the keypad images.
 
 ![ING Login](ing.png)
 
