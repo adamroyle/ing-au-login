@@ -29,6 +29,8 @@
     "pngjs": "^3.4.0"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepublish": "rm -rf dist && npm run build",
+    "postpublish": "git push --follow-tags"
   }
 }
