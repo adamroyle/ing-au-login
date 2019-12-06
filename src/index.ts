@@ -1,9 +1,8 @@
-import { Browser } from 'puppeteer'
+import { Page } from 'puppeteer'
 import pixelmatch from 'pixelmatch'
 import { PNG } from 'pngjs'
 
-export async function login(browser: Browser, clientNumber: string, accessCode: string): Promise<string> {
-  const page = await browser.newPage()
+export async function login(page: Page, clientNumber: string, accessCode: string): Promise<string> {
   await page.goto('https://www.ing.com.au/securebanking/')
   await page.type('#cifField', clientNumber)
 
@@ -26,8 +25,6 @@ export async function login(browser: Browser, clientNumber: string, accessCode: 
     .waitForResponse('https://www.ing.com.au/STSServiceB2C/V1/SecurityTokenServiceProxy.svc/issue')
     .then(res => res.json())
     .then(data => data.Token as string)
-
-  await page.close()
 
   return authToken
 }

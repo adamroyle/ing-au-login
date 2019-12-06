@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/ing-au-login.svg)](https://www.npmjs.com/package/ing-au-login)
 
-Easily login to your ING Australia bank account using [puppeteer](https://pptr.dev/).
+Login to your ING Australia bank account using [puppeteer](https://pptr.dev/).
 
 This package circumvents ING's ["secure" login keypad](https://www.ing.com.au/securebanking/) by analysing the pixel data of the keypad images.
 
@@ -17,7 +17,7 @@ yarn add ing-au-login
 ## API
 
 ```ts
-export function login(browser: puppeteer.Browser, clientNumber: string, accessCode: string): Promise<string>
+export function login(page: puppeteer.Page, clientNumber: string, accessCode: string): Promise<string>
 ```
 
 `login` returns an `auth token` wrapped in a `Promise` that can then be used to export the data you need. Alternatively, you can keep using your browser instance to collect what you require.
@@ -38,7 +38,8 @@ const { login } = require('ing-au-login')
 
 ;(async () => {
   const browser = await puppeteer.launch({ headless: false })
-  const authToken = await login(browser, CLIENT_NUMBER, ACCESS_CODE)
+  const page = await browser.newPage()
+  const authToken = await login(page, CLIENT_NUMBER, ACCESS_CODE)
 
   const csv = await fetchLast30Days(ACCOUNT_NUMBER, authToken)
 
