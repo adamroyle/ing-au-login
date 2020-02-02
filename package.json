@@ -1,7 +1,7 @@
 {
   "name": "ing-au-login",
   "version": "2.0.1",
-  "description": "Easily login to your ING AU account using puppeteer",
+  "description": "Login to your ING Australia bank account using puppeteer",
   "repository": "https://github.com/adamroyle/ing-au-login",
   "author": {
     "name": "Adam Royle",
