@@ -4,6 +4,11 @@ import { PNG } from 'pngjs'
 
 export async function login(page: Page, clientNumber: string, accessCode: string): Promise<string> {
   await page.goto('https://www.ing.com.au/securebanking/')
+  await page.waitForResponse('https://www.ing.com.au/KeypadService/v1/KeypadService.svc/json/PinpadImages')
+  // we wait for a second request, but only if it comes within 2 seconds
+  await page
+    .waitForResponse('https://www.ing.com.au/KeypadService/v1/KeypadService.svc/json/PinpadImages', { timeout: 2000 })
+    .catch(() => {})
   await page.type('#cifField', clientNumber)
 
   const randomisedKeys = await page.$$eval('.pin > img', imgs =>

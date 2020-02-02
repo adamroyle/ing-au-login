@@ -66,3 +66,12 @@ function fetchLast30Days(accountNumber, authToken) {
   return axios.post(url, qs.stringify(data)).then(response => response.data)
 }
 ```
+
+## Testing
+
+You can clone this repository and test the code by using the following command with your client number and access code.
+
+```sh
+yarn
+ts-node test/login.ts 1234567 1234
+```
