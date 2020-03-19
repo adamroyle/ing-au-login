@@ -28,10 +28,14 @@ export async function login(page: Page, clientNumber: string, accessCode: string
 
   const authToken = await page
     .waitForResponse('https://www.ing.com.au/STSServiceB2C/V1/SecurityTokenServiceProxy.svc/issue')
-    .then(res => res.json())
-    .then(data => data.Token as string)
+    .then(res => res.json() as Promise<TokenResponse>)
+    .then(data => data.Token)
 
   return authToken
+}
+
+interface TokenResponse {
+  Token: string
 }
 
 function generateKeyMap(randomisedKeys: string[]) {
