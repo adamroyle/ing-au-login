@@ -32,7 +32,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "prepublish": "rm -rf dist && npm run build",
+    "prepublishOnly": "rm -rf dist && npm run build",
     "postpublish": "git push --follow-tags"
   }
 }
