@@ -17,7 +17,7 @@ export async function login(page: Page, clientNumber: string, accessCode: string
     if (index === -1) {
       throw new Error(`Could not identify character '${char}'`)
     }
-    await page.click('.uia-pin-' + keyMap.indexOf(char))
+    await page.click('.uia-pin-' + index)
   }
 
   await page.click('#login-btn')
