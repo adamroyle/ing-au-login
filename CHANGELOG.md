@@ -1,3 +1,7 @@
+## [2.0.6] - 2022-08-30
+
+- Update deps to latest minor
+
 ## [2.0.5] - 2021-04-06
 
 - Wait for the keypad itself to appear, as waiting for the keypad image requests can timeout (@quad)
