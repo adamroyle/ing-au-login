@@ -4,11 +4,14 @@ import { PNG } from 'pngjs'
 
 export async function login(page: Page, clientNumber: string, accessCode: string): Promise<string> {
   await page.goto('https://www.ing.com.au/securebanking/')
-  await page.waitForSelector('#loginInput')
+  // wait until input field is enabled
+  await page.waitForSelector('#cifField:enabled')
+  // wait another 500 ms to ensure listeners are added
+  await new Promise((res) => setTimeout(res, 500))
   await page.type('#cifField', clientNumber)
 
-  const randomisedKeys = await page.$$eval('.pin > img', imgs =>
-    imgs.map(img => (img as HTMLImageElement).src.slice(22))
+  const randomisedKeys = await page.$$eval('.pin > img', (imgs) =>
+    imgs.map((img) => (img as HTMLImageElement).src.slice(22))
   )
   const keyMap = generateKeyMap(randomisedKeys)
 
@@ -24,8 +27,8 @@ export async function login(page: Page, clientNumber: string, accessCode: string
 
   const authToken = await page
     .waitForResponse('https://www.ing.com.au/api/token/login/issue')
-    .then(res => res.json() as Promise<TokenResponse>)
-    .then(data => data.Token)
+    .then((res) => res.json() as Promise<TokenResponse>)
+    .then((data) => data.Token)
 
   return authToken
 }
@@ -59,5 +62,5 @@ function getKeypadImages() {
     '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',
-  ].map(base64 => PNG.sync.read(Buffer.from(base64, 'base64')))
+  ].map((base64) => PNG.sync.read(Buffer.from(base64, 'base64')))
 }

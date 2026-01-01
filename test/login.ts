@@ -9,7 +9,7 @@ import { login } from '../src'
   if (!CLIENT_NUMBER.match(/\d+/)) throw new Error('Invalid client number')
   if (!ACCESS_CODE.match(/\d+/)) throw new Error('Invalid access code')
 
-  const browser = await puppeteer.launch({ headless: false })
+  const browser = await puppeteer.launch({ headless: false, devtools: true })
   const page = await browser.newPage()
 
   const authToken = await login(page, CLIENT_NUMBER, ACCESS_CODE)
